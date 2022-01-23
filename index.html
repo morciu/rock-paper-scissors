@@ -3,60 +3,29 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
 
     </head>
     <body>
-        <script>
-            const moveList = ['rock', 'paper', 'scissors'];
-
-            game();
-
-            function game() {
-                for (let i=0; i < 5; i++) {
-                    let playerSelection = prompt("Bust a move! (rock, paper, scissors): ");;
-                    let computerSelection = computerPlay();
-
-                    console.log(playRound(playerSelection, computerSelection));
-                }
-            }
-
-            function playRound(player, computer) {
-                while (
-                (typeof player != 'string') || 
-                (moveList.includes(player) == false)
-                ) {
-                    player = prompt("Bust a move! (rock, paper, scissors): ").toLowerCase();
-                }
-
-                return compareMoves(player, computer);
-            }
-
-            function compareMoves(player, computer) {
-                let loseMsg = `You Lose! ${toUpper(computer)} beats ${toUpper(player)}`;
-
-                if ((player === 'rock' && computer === 'paper') ||
-                    (player === 'paper' && computer === 'scissors') ||
-                    (player === 'scissors' && computer === 'rock')) {
-                        return loseMsg;
-                    }
-                else if (player === computer) {
-                    return "DRAW!";
-                }
-                else {
-                    return `You Win! Computer chose ${toUpper(computer)}`;
-                }
-            }
-
-
-            function toUpper(string) {
-                return string.replace(string.charAt(0), string.charAt(0).toUpperCase());
-            }
-
-
-            function computerPlay() {
-                randNr = Math.floor(Math.random() * moveList.length);
-                return moveList[randNr]
-            }
-        </script>
+        <div class="top">
+            <div class="buttonContainer">
+                <ul>
+                    <li>
+                        <button class="btn" id="rock" value="rock">Rock</button>
+                    </li>
+                    <li>
+                        <button class="btn" id="paper" value="paper">Paper</button>
+                    </li>
+                    <li>
+                        <button class="btn" id="scissors" value="scissors">Scissors</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom">
+            <div id="score">Score: 0</div>
+            <div id="results">Bust a move!</div>
+        </div>
     </body>
 </html>
